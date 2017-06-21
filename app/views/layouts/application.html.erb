@@ -9,25 +9,21 @@
   </head>
 
   <body>
-    <header role="banner" class="wrap-float">
-      <div class="center wrap-float">
-        <nav class="clearfix">
-          <ul class="no-bullets no-margin no-padding right">
-            <% if logged_in? %>
-            <!-- logged_in? and other users helpers are temporarily living in the readme, until controllers/helpers/views are generated -->
-              <li class=" left">|<a href='/users/<%= session[:user_id] %>/entries'><%= current_username %></a> | </li>
-              <li class="left"><a href="/logout">log out</a> | </li>
-            <% else %>
-              <li class="left">|<a href="/users/new">register</a> | </li>
-              <li class="left"><a href="/login">login</a> | </li>
-            <% end %>
-            <li class="left"><a href="/">home</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-
+    <div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
+    <nav>
+      <% if user_signed_in? %>
+        <%= link_to 'Home', welcome_index_path %>
+        <%= link_to 'My Profile', user_session_path(current_user) %>
+        <%= link_to 'Logout', destroy_user_session_path %>
+      <% else %>
+        <%= link_to 'Home', welcome_index_path %>
+        <%= link_to 'Register', new_user_registration_path %>
+        <%= link_to 'Login', new_user_session_path %>
+      <% end %>
+    </nav>
     <%= yield %>
 
   </body>

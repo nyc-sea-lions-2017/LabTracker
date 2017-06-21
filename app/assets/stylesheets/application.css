@@ -13,3 +13,66 @@
  *= require_tree .
  *= require_self
  */
+
+html {
+  height: 100%;
+  background-color: MintCream;
+  /*background-attachment: fixed;*/
+  /*line-height: 1.4;*/
+}
+
+.clearfix:after {
+   content: " "; /* Older browser do not support empty content */
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.inline {
+  display: inline;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.no-bg {
+  background: none;
+}
+
+.no-border {
+  border: none;
+}
+
+.no-bullets {
+  list-style-type: none;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-outline {
+  outline: none;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.wrap-float {
+  overflow: auto;
+}

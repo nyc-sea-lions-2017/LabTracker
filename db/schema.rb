@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20170621142751) do
 
   create_table "experiments", force: :cascade do |t|
     t.string "results", null: false
-    t.string "conclusions", null: false
+    t.string "conclusions"
     t.bigint "proposal_id", null: false
     t.integer "experimenter_id"
     t.datetime "created_at", null: false
@@ -51,8 +51,10 @@ ActiveRecord::Schema.define(version: 20170621142751) do
   end
 
   create_table "proposals", force: :cascade do |t|
+    t.string "title", null: false
     t.string "summary", null: false
     t.string "hypothesis", null: false
+    t.string "status", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

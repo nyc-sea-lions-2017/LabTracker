@@ -4,5 +4,6 @@ class Experiment < ApplicationRecord
   has_one :procedure
   has_many :observations, as: :observable
   has_many :comments, as: :commentable
+  validates :proposal, :experimenter_id, presence: true 
 
 end

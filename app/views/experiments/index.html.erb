@@ -1,0 +1,15 @@
+<h1>Experiments Index</h1>
+
+<% if !@experiments.empty? %>
+  <%= @experiments.each do |experiment| %>
+    <li>
+      <ul><%= eperiment.proposal.title%><ul>
+      <ul><%= experiment.results %></ul>
+      <ul><%= experiment.conclusions %></ul>
+      <ul><%= experiment.experimenter%></ul>
+    </li>
+  <% end %>
+<% else %>
+  <h3> No experiments yet! </h3>
+  <%= link_to "Create a new experiment", new_experiment_path %>
+<% end %>

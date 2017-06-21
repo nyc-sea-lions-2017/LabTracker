@@ -17,9 +17,9 @@ class ExperimentsController < ApplicationController
 
   def create
     @experiment = Experiment.new(experiment_params)
-    if @experiment.save
-      redirect_to experiments_path(@experiment)
-    end
+    @experiment.save
+    redirect_to experiments_path(@experiment)
+
   end
 
   def destroy
@@ -34,6 +34,9 @@ class ExperimentsController < ApplicationController
   private
 
   def experiment_params
+    a= params.require(:experiment).permit(:results,:conclusions)
+    a[:proposal] =
+    a[:experimenter_id] = 1
 
   end
 end

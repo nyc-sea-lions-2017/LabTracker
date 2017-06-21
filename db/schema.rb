@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20170621142751) do
 
   create_table "observations", force: :cascade do |t|
     t.integer "observer_id"
-    t.integer "oberservable_id", null: false
+    t.integer "observable_id", null: false
     t.string "observable_type", null: false
     t.string "body", null: false
     t.datetime "created_at", null: false

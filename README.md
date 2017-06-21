@@ -22,3 +22,18 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+module UsersHelper
+  def logged_in?
+    !!session[:user_id]
+  end
+
+    def current_user
+    User.find(session[:user_id])
+  end
+
+  def current_username
+    User.find(session[:user_id]).username
+  end
+end

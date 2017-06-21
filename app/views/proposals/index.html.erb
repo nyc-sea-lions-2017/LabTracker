@@ -1,0 +1,19 @@
+<h1>Proposals#index</h1>
+<p><%= link_to "Add a Proposal", new_proposal_path %></p>
+
+<!-- New Proposals -->
+<p>Proposals:</p>
+<div>
+  <% if @proposals.empty? %>There aren't any proposals
+  <% else %>
+    <ul>
+      <% @proposals.each do |p| %>
+        <li><%= link_to "#{p.title}", p %> by <%= link_to "#{p.user}", p.user %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
+<!-- <p>Active Experiments:</p> -->
+<!-- <p>Recently Completed Experiments:</p> -->
+<!-- <p>Archived Experiments:</p> -->

@@ -4,11 +4,9 @@ class ExperimentsController < ApplicationController
   end
 
   def show
-    @experiment = Experiment.find_by(id:experiment_params)
-  end
-
-  def find
-    @experiment = Experiment.find(experiment_params)
+    # byebug
+    @experiment = Experiment.find_by(id:params[:id])
+    render "show"
   end
 
   def new
@@ -18,9 +16,9 @@ class ExperimentsController < ApplicationController
   def create
     @experiment = Experiment.new(experiment_params)
     @experiment.save
-    redirect_to experiments_path(@experiment)
-
+    redirect_to @experiment
   end
+
 
   def destroy
   end
@@ -34,9 +32,10 @@ class ExperimentsController < ApplicationController
   private
 
   def experiment_params
-    a= params.require(:experiment).permit(:results,:conclusions)
-    a[:proposal] =
+    a = params.require(:experiment).permit(:results,:conclusions)
+    a[:proposal] = Proposal.last
     a[:experimenter_id] = 1
+    a
 
   end
 end

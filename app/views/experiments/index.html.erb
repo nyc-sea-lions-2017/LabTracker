@@ -1,13 +1,12 @@
 <h1>Experiments Index</h1>
 
 <% if !@experiments.empty? %>
-  <%= @experiments.each do |experiment| %>
-    <li>
-      <ul><%= eperiment.proposal.title%><ul>
+  <% @experiments.each do |experiment| %>
+    <ul>
+      <ul><%= experiment.proposal.title%></ul>
       <ul><%= experiment.results %></ul>
       <ul><%= experiment.conclusions %></ul>
-      <ul><%= experiment.experimenter%></ul>
-    </li>
+    </ul>
   <% end %>
 <% else %>
   <h3> No experiments yet! </h3>

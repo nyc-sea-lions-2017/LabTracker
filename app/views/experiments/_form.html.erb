@@ -1,5 +1,5 @@
 <h1> Experiments form </h1>
-<%= form_with(model: @experiment) do |form| %>
+<%= form_with(model: @experiment, local: true) do |form| %>
   <ul>
     <ul><%= form.text_area :results, cols: '40',rows: '12', placeholder:'Results' %></ul>
     <ul><%= form.text_area :conclusions, cols: '40',rows: '12', placeholder: 'Conclusions- Not necessary'%></ul>

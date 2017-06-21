@@ -1,7 +1,7 @@
-User.create({username: 'User1', email: 'user1@email.net', password_digest: BCrypt::Password.create('password')})
-User.create({username: 'User2', email: 'user2@email.net', password_digest: BCrypt::Password.create('password')})
-User.create({username: 'User3', email: 'user3@email.net', password_digest: BCrypt::Password.create('password')})
-User.create({username: 'User4', email: 'user4@email.net', password_digest: BCrypt::Password.create('password')})
+User.create({username: 'User1', email: 'user1@email.net', password: 'password', password_confirmation: 'password'})
+User.create({username: 'User2', email: 'user2@email.net', password: 'password', password_confirmation: 'password'})
+User.create({username: 'User3', email: 'user3@email.net', password: 'password', password_confirmation: 'password'})
+User.create({username: 'User4', email: 'user4@email.net', password: 'password', password_confirmation: 'password'})
 
 Proposal.create({title: "Is gravity safe?", summary: "none", hypothesis: "none", status: "open", user: User.find_by(id: 0)})
 Proposal.create({title: "Is Minkee real?", summary: "none", hypothesis: "none", status: "open", user: User.find_by(id: 2)})

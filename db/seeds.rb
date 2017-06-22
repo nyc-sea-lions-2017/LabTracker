@@ -1,3 +1,7 @@
+
+User.create(username: 'teddy', email:"teddy.koomen@gmail.com",password:'koomen',password_confirmation:'koomen')
+Proposal.create(title:'poop',summary:'smells',hypothesis:'bad',status:'open',user:User.last)
+
 User.create({username: 'User1', email: 'user1@email.net', password: 'password', password_confirmation: 'password'})
 User.create({username: 'User2', email: 'user2@email.net', password: 'password', password_confirmation: 'password'})
 User.create({username: 'User3', email: 'user3@email.net', password: 'password', password_confirmation: 'password'})
@@ -17,3 +21,4 @@ Observation.create({observer_id: 2, observable_id: 0, observable_type: "Procedur
 Comment.create({commenter_id: 2, commentable_id: Proposal.find_by(id: 0), commentable_type: "proposal", body: "NOT SAFE"})
 Comment.create({commenter_id: 3, commentable_id: Experiment.find_by(id: 0), commentable_type: "experiment", body: "I WILL FIND OUT"})
 Comment.create({commenter_id: 2, commentable_id: Observation.find_by(id: 0), commentable_type: "observation", body: "Bogus."})
+

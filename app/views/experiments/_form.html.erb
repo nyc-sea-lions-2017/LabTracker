@@ -1,8 +1,8 @@
-<h1> Experiments form </h1>
-<%= form_with(model: @experiment, local: true) do |form| %>
-  <ul>
-    <ul><%= form.text_area :results, cols: '40',rows: '12', placeholder:'Results' %></ul>
-    <ul><%= form.text_area :conclusions, cols: '40',rows: '12', placeholder: 'Conclusions- Not necessary'%></ul>
-    <ul><%= form.submit %></ul>
-  </ul>
+<h1> New experiment! </h1>
+
+<%= form_for [:proposal, @experiment] do |f| %>
+<ul>
+  <ul><%= f.text_area :results, cols: "40", rows: '12', placeholder: 'Results' %></ul>
+  <ul><%= f.text_area :conclusions, cols: "40", rows: '12', placeholder:'Conclusions- Not necessary'  %></ul>
+  <ul><%= f.submit %></ul>
 <% end %>

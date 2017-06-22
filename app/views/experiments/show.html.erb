@@ -1,2 +1,8 @@
-<h1>Experiments#show</h1>
-<p>Find me in app/views/experiments/show.html.erb</p>
+<% if @experiment %>
+  <ul>
+    <ul>Results: <%= @experiment.results %></ul>
+    <ul>Conclusions: <%= @experiment.conclusions %></ul>
+  </ul>
+<% else %>
+  No experiments yet
+<% end %>

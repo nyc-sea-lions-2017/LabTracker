@@ -33,7 +33,7 @@ class ProposalsController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @proposal = Proposal.find_by(id: params[:id])
   end
 
   private

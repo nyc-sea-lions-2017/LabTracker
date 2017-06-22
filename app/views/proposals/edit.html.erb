@@ -1,10 +1,10 @@
 <h1>EDIT YOUR PROPOSAL</h1>
 
 <% form_with(model: @proposal, method: 'put', locals: true) do |f| %>
-  <%= f.text_field :title, value=@proposal.title %>
-  <%= f.text_area :summary, value=@proposal.summary %>
-  <%= f.text_area :hypothesis, value=@proposal.hypothesis %>
-  <%= f.hidden :status, value=@proposal.status %>
-  <%= f.hidden :user, value=@user %>
+  <%= f.text_field :title, value: @proposal.title %>
+  <%= f.text_area :summary, value: @proposal.summary %>
+  <%= f.text_area :hypothesis, value: @proposal.hypothesis %>
+  <%= f.hidden_field :status, value: @proposal.status %>
+  <%= f.hidden_field :user, value: @user %>
   <%= f.submit %>
 <% end %>

@@ -1,11 +1,11 @@
 <h1>YOUR NEW PROPOSAL</h1>
 
-<% form_with(model: @proposal, locals: true) do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :summary %>
-  <%= f.text_area :hypothesis %>
-  <%= f.hidden :status, value="open" %>
-  <%= f.hidden :user, value=@user %>
+<%= form_with(model: @proposal, locals: true) do |f| %>
+  <%= f.text_field :title, placeholder: "title" %>
+  <%= f.text_area :summary, placeholder: "summary" %>
+  <%= f.text_area :hypothesis, placeholder: "hypothesis" %>
+  <%= f.hidden_field :status, value: "open" %>
+  <%= f.hidden_field :user, value: current_user %>
   <%= f.submit %>
 <% end %>
 

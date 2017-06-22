@@ -8,7 +8,7 @@
   <% else %>
     <ul>
       <% @proposals.each do |p| %>
-        <li><%= link_to "#{p.title}", p %> by <%= link_to "#{p.user.username}", p.user %></li>
+        <li><%= link_to "#{p.title}", p %> by <%= link_to "#{User.find_by(id: p.user_id).username}", p.user %></li>
       <% end %>
     </ul>
   <% end %>

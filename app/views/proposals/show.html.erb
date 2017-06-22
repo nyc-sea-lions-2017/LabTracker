@@ -1,4 +1,6 @@
-<h1><%= @proposal.title %> :: <%= link_to @proposal.user.username, @proposal.user %></h1>
+<h1><%= @proposal.title %> :: <%= link_to @proposal.user.username, @proposal.user %>
+  <% if @user == @proposal.user %> :: <%= link_to 'edit', edit_proposal_path(@proposal) %><% end %>
+</h1>
 <div>
   SUMMARY: <%= @proposal.summary %><br><br>
   HYPOTHESIS: <%= @proposal.hypothesis %><br><br>
@@ -14,6 +16,11 @@
 <%= link_to "add a comment", new_proposal_comment_path(@proposal) %>
 <% if @proposal.comments %>
   <% @proposal.comments.each do |c| %>
-    <p>"<%= c.body %>" - <%= link_to "#{c.commenter.email}", c.commenter %></p>
+    <p>"<%= c.body %>" - <%= link_to c.commenter.username, c.commenter %>
+      <% if @user == c.commenter %> :: <%= form_with(model: c, url: proposal_comment_path(@proposal, c), method: 'delete', local: true) do |f| %>
+          <%= f.submit value: 'delete' %><br>
+        <% end %>
+      <% end %>
+    </p>
   <% end %>
 <% end %>

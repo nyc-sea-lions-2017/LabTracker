@@ -36,6 +36,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    comment = Comment.find_by(id: params[:id])
+    route = comment.commentable
+    comment.destroy
+    redirect_to route
   end
 
   private

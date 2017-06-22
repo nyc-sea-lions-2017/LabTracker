@@ -1,14 +1,17 @@
 <h1>Experiments Index</h1>
 
-<% if !@experiments.empty? %>
-  <% @experiments.each do |experiment| %>
+<% if @experiment%>
     <ul>
-      <ul><h3>Proposal: <%= experiment.proposal.title%></h3></ul>
-      <ul><%= experiment.results %></ul>
-      <ul><%= experiment.conclusions %></ul>
+
+      <ul><h3>Proposal: <%= @experiment.proposal.title%></h3></ul>
+      Experiment:
+      <ul><h3>Results:<%= @experiment.results %></h3></ul>
+      <ul><h3>Conclusions: <%= @experiment.conclusions %></h3></ul>
+      <%= link_to "Edit Experiment", edit_proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id) %>
+      <%= link_to "Delete", proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id), method: :delete%>
+      <%= link_to "Back to proposal", proposal_path(@proposal)%>
     </ul>
-  <% end %>
 <% else %>
   <h3> No experiments yet! </h3>
-  <%= link_to "Create a new experiment", new_proposal_experiment_path %>
+  <%= link_to "Create a new experiment", proposal_experiment(@proposal) %>
 <% end %>

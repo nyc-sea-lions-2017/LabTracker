@@ -7,5 +7,22 @@
     <%= f.hidden_field :commentable_id, value: @proposal.id %>
     <%= f.hidden_field :commentable_type, value: "Proposal" %>
     <%= f.submit %>
-    <% end %>
+  <% end %>
+<% elsif !!@experiment %>
+  <%= form_with(model: @comment, url: experiment_comments_path(@experiment), local: true) do |f| %>
+    <%= f.text_area :body %>
+    <%= f.hidden_field :commenter_id, value: @user.id %>
+    <%= f.hidden_field :commentable_id, value: @experiment.id %>
+    <%= f.hidden_field :commentable_type, value: "Experiment" %>
+    <%= f.submit %>
+  <% end %>
+<% elsif !!@observation %>
+  <%= form_with(model: @comment, url: observation_comments_path(@observation), local: true) do |f| %>
+    <%= f.text_area :body %>
+    <%= f.hidden_field :commenter_id, value: @user.id %>
+    <%= f.hidden_field :commentable_id, value: @observation.id %>
+    <%= f.hidden_field :commentable_type, value: "Observation" %>
+    <%= f.submit %>
+  <% end %>
+
 <% end %>

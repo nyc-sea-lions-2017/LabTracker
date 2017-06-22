@@ -6,3 +6,9 @@
   <ul><%= f.text_area :conclusions, cols: "40", rows: '12', placeholder:'Conclusions- Not necessary'  %></ul>
   <ul><%= f.submit %></ul>
 <% end %>
+
+<% if @errors %>
+  <% @errors.each do |error| %>
+    <%= error %>
+  <% end %>
+<% end %>

@@ -1,2 +1,10 @@
-<h1>Proposals#edit</h1>
-<p>Find me in app/views/proposals/edit.html.erb</p>
+<h1>EDIT YOUR PROPOSAL</h1>
+
+<% form_with(model: @proposal, method: 'put', locals: true) do |f| %>
+  <%= f.text_field :title, value=@proposal.title %>
+  <%= f.text_area :summary, value=@proposal.summary %>
+  <%= f.text_area :hypothesis, value=@proposal.hypothesis %>
+  <%= f.hidden :status, value=@proposal.status %>
+  <%= f.hidden :user, value=@user %>
+  <%= f.submit %>
+<% end %>

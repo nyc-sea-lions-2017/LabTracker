@@ -7,9 +7,9 @@
   STATUS: <%= @proposal.status %><br>
 </div>
 
-<% if @proposal.status == "in progess" %>
-  <h2><%= link_to "EXPERIMENT", @proposal.experiment %> BEING CONDUCTED BY: <%= @proposal.experimenter.username %></h2>
-<% else %>
+<% if @proposal.status == "in progress" %>
+  <h2><%= link_to "EXPERIMENT", proposal_experiment_path(@proposal.experiment) %> BEING CONDUCTED BY: <%= @proposal.user.username %></h2>
+<% elsif @proposal.status == "open" %>
   <%= link_to "lead this experiment", new_proposal_experiment_path(@proposal) %>
 <% end %><br><br>*********<br><br>
 
@@ -22,7 +22,7 @@
       <% end %></div>
     <% end %>
     <p>"<%= c.body %>" - 
-      <%= link_to "#{c.commenter.username}", user_path(c.commenter) %>
+      <%= link_to "#{c.commenter.email}", user_path(c.commenter) %>
     </p><br>
   <% end %>
 <% end %>

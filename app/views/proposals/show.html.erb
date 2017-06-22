@@ -8,7 +8,7 @@
 </div>
 
 <% if @proposal.status == "in progress" %>
-  <h2><%= link_to "EXPERIMENT", proposal_experiment_path(@proposal.experiment) %> BEING CONDUCTED BY: <%= @proposal.user.username %></h2>
+  <h2><%= link_to "EXPERIMENT", proposal_experiment_path(@proposal, @proposal.experiment) %> BEING CONDUCTED BY: <%= @proposal.user.username %></h2>
 <% elsif @proposal.status == "open" %>
   <%= link_to "lead this experiment", new_proposal_experiment_path(@proposal) %>
 <% end %><br><br>*********<br><br>

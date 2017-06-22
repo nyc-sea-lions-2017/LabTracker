@@ -1,31 +1,44 @@
 class ProposalsController < ApplicationController
   def new
-    set_user
-    @proposal = @user.proposal.new
+    @user = current_user
+    @proposal = @user.proposals.new
   end
 
   def create
-    set_user
+    @user = current_user
+    @proposal = @user.proposals.new(proposal_params)
+
+    @proposal.save
+    redirect_to(@proposal , notice: 'Proposal was successfully created.')
   end
 
   def update
-    set_user
+    @user = current_user
+    @proposal = Proposal.find(params[:id])
+    @proposal.update(proposal_params)
+    redirect_to(@proposal, notice: 'Proposal was successfully updated.')
   end
 
   def edit
-    set_user
+    @user = current_user
   end
 
   def destroy
-    set_user
+    @user = current_user
   end
 
   def index
-    set_user
+    @user = current_user
     @proposals = Proposal.all
   end
 
   def show
-    set_user
+    @user = current_user
   end
+
+  private
+    def proposal_params
+      params.require(:proposal).permit(:title, :summary, :user, :status, :hypothesis)
+    end
+
 end

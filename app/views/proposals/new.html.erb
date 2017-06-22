@@ -1,6 +1,6 @@
 <h1>YOUR NEW PROPOSAL</h1>
 
-<%= form_with(model: @proposal, locals: true) do |f| %>
+<%= form_with(model: @proposal, local: true) do |f| %>
   <%= f.text_field :title, placeholder: "title" %>
   <%= f.text_area :summary, placeholder: "summary" %>
   <%= f.text_area :hypothesis, placeholder: "hypothesis" %>

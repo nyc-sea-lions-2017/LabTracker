@@ -9,11 +9,11 @@
   <h2>EXPERIMENT BEING CONDUCTED BY: <%= @proposal.experimenter.username %></h2>
 <% else %>
   <%= link_to "lead this experiment", new_proposal_experiment_path(@proposal) %>
-<% end %><br><br>
+<% end %><br><br>*********<br><br>
 
 <%= link_to "add a comment", new_proposal_comment_path(@proposal) %>
-<!-- <% if !@proposal.comments.empty? %> -->
-  <% @proposal.comments.all.each do |c| %>
-    <p><%= c.body %><br><%= link_to '#{@c.commenter.username}', @c.commenter %></p>
+<% if @proposal.comments %>
+  <% @proposal.comments.each do |c| %>
+    <p>"<%= c.body %>" - <%= link_to "#{c.commenter.email}", c.commenter %></p>
   <% end %>
 <% end %>

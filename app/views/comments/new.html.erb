@@ -1,7 +1,7 @@
 <br><br>
 
 <% if !!@proposal %>
-  <%= form_with(model: @comment, url: proposal_comments_path(@proposal), locals: true) do |f| %>
+  <%= form_with(model: @comment, url: proposal_comments_path(@proposal), local: true) do |f| %>
     <%= f.text_area :body %>
     <%= f.hidden_field :commenter_id, value: @user.id %>
     <%= f.hidden_field :commentable_id, value: @proposal.id %>

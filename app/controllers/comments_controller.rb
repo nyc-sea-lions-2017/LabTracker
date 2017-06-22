@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
     end
 
     @comment.save
-    redirect_to(@comment.commentable)
+    redirect_to @comment.commentable
   end
 
   def update

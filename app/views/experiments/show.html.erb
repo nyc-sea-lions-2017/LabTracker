@@ -9,6 +9,11 @@
   </ul>
   <% if @experiment.comments %>
     <% @experiment.comments.each do |c| %>
+      <% if current_user.id == c.commenter.id %>
+        <div class="inline block left"><%= form_with(model: c, url: proposal_comment_path(c), method: 'delete', local: true) do |f| %>
+          <%= f.submit value: 'delete' %>
+        <% end %></div>
+      <% end %>
       <p>"<%= c.body %>" - <%= link_to "#{c.commenter.email}", c.commenter %></p>
     <% end %>
   <% end %>

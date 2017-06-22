@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
-    @experiment = Experiment.find_by(id:params[:id])
+    @proposals = Proposal.where(user: @user.id)
+    @experiments = Experiment.where(experimenter_id: @user.id)
   end
 
   private

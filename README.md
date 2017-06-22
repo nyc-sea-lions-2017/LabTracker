@@ -24,16 +24,14 @@ Things you may want to cover:
 * ...
 
 
-module UsersHelper
-  def logged_in?
-    !!session[:user_id]
-  end
-
-    def current_user
-    User.find(session[:user_id])
-  end
-
-  def current_username
-    User.find(session[:user_id]).username
-  end
-end
+<!-- Experiment:
+<ul><h3>Results:<%= @experiments.first.results %></h3></ul>
+<ul><h3>Conclusions: <%= @experiments.first.conclusions %></h3></ul>
+<% if current_user.id == @experiments.first.experimenter_id %>
+<%= link_to "Edit Experiment", edit_proposal_experiment_path(proposal_id: @experiments.first.proposal.id, id: @experiments.first.id) %>
+<%= link_to "Delete", proposal_experiment_path(proposal_id: @experiments.first.proposal.id, id: @experiments.first.id), method: :delete%>
+<%= link_to "Back to proposal", proposal_path(@experiments.first.proposal)%>
+<% else %>
+<%= link_to "Back to proposal", proposal_path(@experiments.first.proposal)%>
+<% end %>
+</ul> -->

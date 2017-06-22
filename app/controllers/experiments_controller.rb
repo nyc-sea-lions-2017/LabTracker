@@ -4,19 +4,20 @@ class ExperimentsController < ApplicationController
   end
 
   def show
-    # byebug
+    @proposal = Proposal.find_by(id: params[:id])
     @experiment = Experiment.find_by(id:params[:id])
-    render "show"
   end
 
   def new
+    @proposal = Proposal.find_by(id: params[:id])
     @experiment = Experiment.new
   end
 
   def create
+    @proposal = Proposal.find_by(id: params[:id])
     @experiment = Experiment.new(experiment_params)
     @experiment.save
-    redirect_to @experiment
+    redirect_to [:proposal,@experiment]
   end
 
 

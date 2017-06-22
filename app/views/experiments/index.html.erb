@@ -3,12 +3,12 @@
 <% if !@experiments.empty? %>
   <% @experiments.each do |experiment| %>
     <ul>
-      <ul><%= experiment.proposal.title%></ul>
+      <ul><h3>Proposal: <%= experiment.proposal.title%></h3></ul>
       <ul><%= experiment.results %></ul>
       <ul><%= experiment.conclusions %></ul>
     </ul>
   <% end %>
 <% else %>
   <h3> No experiments yet! </h3>
-  <%= link_to "Create a new experiment", new_experiment_path %>
+  <%= link_to "Create a new experiment", new_proposal_experiment_path %>
 <% end %>

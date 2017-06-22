@@ -11,14 +11,13 @@ Proposal.create({title: "Is gravity safe?", summary: "none", hypothesis: "none",
 Proposal.create({title: "Is Minkee real?", summary: "none", hypothesis: "none", status: "open", user: User.find_by(id: 2)})
 Proposal.create({title: "Where is Sephora?", summary: "none", hypothesis: "none", status: "in progress", user: User.find_by(id: 3)})
 
-Experiment.create({results: "none", proposal: Proposal.find_by(id: 0), experimenter_id: 3})
+Experiment.create({results: "none", proposal: Proposal.first.id, experimenter_id: 3})
 
 Procedure.create({name: "Dropping Things", experiment_id: 0})
 
 Observation.create({observer_id: 2, observable_id: 0, observable_type: "Experiment", body: "Things fall down"})
 Observation.create({observer_id: 2, observable_id: 0, observable_type: "Procedure", body: "Things definitely fall down"})
 
-Comment.create({commenter_id: 2, commentable_id: Proposal.find_by(id: 0), commentable_type: "proposal", body: "NOT SAFE"})
-Comment.create({commenter_id: 3, commentable_id: Experiment.find_by(id: 0), commentable_type: "experiment", body: "I WILL FIND OUT"})
-Comment.create({commenter_id: 2, commentable_id: Observation.find_by(id: 0), commentable_type: "observation", body: "Bogus."})
-
+Comment.create({commenter_id: 2, commentable_id: Proposal.first.id, commentable_type: "proposal", body: "NOT SAFE"})
+Comment.create({commenter_id: 3, commentable_id: Experiment.first.id, commentable_type: "experiment", body: "I WILL FIND OUT"})
+Comment.create({commenter_id: 2, commentable_id: Observation.first.id, commentable_type: "observation", body: "Bogus."})

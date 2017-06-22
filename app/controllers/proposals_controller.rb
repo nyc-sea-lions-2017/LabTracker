@@ -33,12 +33,12 @@ class ProposalsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @proposal = Proposal.find_by(id: params[:id])
   end
-
+  
   private
     def proposal_params
       params.require(:proposal).permit(:title, :summary, :user, :status, :hypothesis)
     end
-
 end

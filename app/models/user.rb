@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :proposals
   has_many :experiments
+  has_many :comments
   validates :email, presence: true, uniqueness: true
   validates :password, presence: true
 end

@@ -23,6 +23,7 @@ class ExperimentsController < ApplicationController
     @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     @experiment = Experiment.new(experiment_params)
     if @experiment.save
+      @proposal.update(status: "in progress")
       redirect_to proposal_experiment_path(@proposal,@experiment)
     else
       @errors = @experiment.errors.full_messages

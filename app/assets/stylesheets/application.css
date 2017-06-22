@@ -29,6 +29,10 @@ html {
    clear: both;
 }
 
+.block {
+  display: block;
+}
+
 .center {
   margin: 0 auto;
 }

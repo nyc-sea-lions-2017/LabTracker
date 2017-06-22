@@ -5,15 +5,15 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @proposal = @user.proposals.new(proposal_params)
+    @user = params[:proposal][:user]
+    @proposal = Proposal.new(proposal_params)
 
     @proposal.save
     redirect_to(@proposal , notice: 'Proposal was successfully created.')
   end
 
   def update
-    @user = current_user
+    @user = params[:user]
     @proposal = Proposal.find(params[:id])
     @proposal.update(proposal_params)
     redirect_to(@proposal, notice: 'Proposal was successfully updated.')
@@ -39,6 +39,6 @@ class ProposalsController < ApplicationController
   
   private
     def proposal_params
-      params.require(:proposal).permit(:title, :summary, :user, :status, :hypothesis)
+      params.require(:proposal).permit(:title, :summary, :user_id, :status, :hypothesis)
     end
 end

@@ -1,1 +1,23 @@
-<h1>Profile Page</h1>
+<h1>Welcome back, <%= current_user.username.upcase %></h1>
+
+<p><%= link_to "Add a Proposal", new_proposal_path %></p>
+
+
+<% if @experiment%>
+  <h2>Experiments you've created:</h2>
+    <ul>
+      <ul><h3>Proposal: <%= @experiment.proposal.title%></h3></ul>
+      Experiment:
+      <ul><h3>Results:<%= @experiment.results %></h3></ul>
+      <ul><h3>Conclusions: <%= @experiment.conclusions %></h3></ul>
+      <% if current_user.id == @experiment.experimenter_id %>
+        <%= link_to "Edit Experiment", edit_proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id) %>
+        <%= link_to "Delete", proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id), method: :delete%>
+        <%= link_to "Back to proposal", proposal_path(@proposal)%>
+      <% else %>
+        <%= link_to "Back to proposal", proposal_path(@proposal)%>
+      <% end %>
+    </ul>
+<% else %>
+  <h2> No experiments yet! </h2>
+<% end %>

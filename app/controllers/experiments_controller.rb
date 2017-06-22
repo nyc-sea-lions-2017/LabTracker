@@ -1,6 +1,7 @@
 class ExperimentsController < ApplicationController
   before_action :authenticate_user!
 
+
   def index
     @proposal = Proposal.find_by(id: params[:proposal_id])
     @experiment = @proposal.experiment
@@ -28,23 +29,30 @@ class ExperimentsController < ApplicationController
 
   def destroy
     @proposal = Proposal.find_by(id: params[:proposal_id])
-    @experiment = @proposal.experiment
-    @experiment.destroy
-    redirect_to @proposal
+    if current_user.id == @proposal.user.id
+      @experiment = @proposal.experiment
+      @experiment.destroy
+      redirect_to @proposal
+    else
+      redirect_to @proposal
+    end
   end
 
   def edit
     @proposal = Proposal.find_by(id: params[:proposal_id])
     @experiment = @proposal.experiment
-
+    # byebug
   end
 
   def update
     @proposal = Proposal.find_by(id: params[:proposal_id])
-    byebug
     @experiment = @proposal.experiment
-    @experiment.update_attributes(experiment_params)
-    redirect_to proposal_experiment_path(@proposal,@experiment)
+    if current_user.id == @experiment.experimenter_id
+      @experiment.update_attributes(experiment_params)
+      redirect_to proposal_experiment_path(@proposal,@experiment)
+    else
+      redirect_to proposal_experiment_path(@proposal,@experiment)
+    end
   end
 
   private
@@ -52,7 +60,7 @@ class ExperimentsController < ApplicationController
   def experiment_params
     a = params.require(:experiment).permit(:results,:conclusions)
     a[:proposal] = Proposal.find_by(id: params[:proposal_id])
-    a[:experimenter_id] = 1
+    a[:experimenter_id] = current_user.id
     a
   end
 

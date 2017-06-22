@@ -1,6 +1,6 @@
 <h1> Edit Proposal </h2>
 
-<%= form_for [:proposal, @experiment] do |f| %>
+<%= form_for [@proposal, @experiment] do |f| %>
 <ul>
   <ul><%= f.text_area :results, cols: "40", rows: '12', placeholder: @experiment.results %></ul>
   <ul><%= f.text_area :conclusions, cols: "40", rows: '12', placeholder: @experiment.conclusions  %></ul>

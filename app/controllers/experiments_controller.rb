@@ -16,15 +16,18 @@ class ExperimentsController < ApplicationController
   def new
     @proposal = Proposal.find_by(id: params[:id])
     @experiment = Experiment.new
-    
+
   end
 
   def create
     @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     @experiment = Experiment.new(experiment_params)
-    @experiment.save
-
-    redirect_to proposal_experiment_path(@proposal,@experiment)
+    if @experiment.save
+      redirect_to proposal_experiment_path(@proposal,@experiment)
+    else
+      @errors = @experiment.errors.full_messages
+      render 'experiments/new'
+    end
   end
 
 

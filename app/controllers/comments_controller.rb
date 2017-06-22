@@ -6,8 +6,10 @@ class CommentsController < ApplicationController
       @comment = @proposal.comments.new
     elsif params[:experiment_id]
       @experiment = Experiment.find_by(id: params[:experiment_id])
+      @comment= @experiment.comments.new
     elsif params[:observation_id]
       @observation = Observation.find_by(id: params[:observation_id])
+      @comment = @observation.comments.new
     end
   end
 
@@ -22,14 +24,20 @@ class CommentsController < ApplicationController
     if params[:proposal_id]
       @proposal = Proposal.find_by(id: params[:proposal_id])
       @comment = @proposal.comments.new(comment_params)
+      @comment.save
+      redirect_to @proposal
     elsif params[:experiment_id]
       @experiment = Experiment.find_by(id: params[:experiment_id])
+      @proposal = @experiment.proposal
+      @comment= @experiment.comments.new(comment_params)
+      @comment.save
+      redirect_to proposal_experiment_path(@proposal, @experiment)
     elsif params[:observation_id]
       @observation = Observation.find_by(id: params[:observation_id])
+      @comment = @observation.comments.new(comment_params)
+      @comment.save
+      redirect_to @observation
     end
-
-    @comment.save
-    redirect_to @comment.commentable
   end
 
   def update

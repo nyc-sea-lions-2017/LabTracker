@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  
+
   resources :proposals do
     resources :experiments
   end
 
   resources :proposals do
     resources :comments
+  end
+
+  resources :experiments, only: [] do
+    resources :comments
+  end
+
+  resources :experiments, only:[] do
+    resources :observations
   end
 
   get 'welcome/index'

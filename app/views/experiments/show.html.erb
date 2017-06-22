@@ -2,7 +2,16 @@
   <ul>
     <ul>Results: <%= @experiment.results %></ul>
     <ul>Conclusions: <%= @experiment.conclusions %></ul>
+    <%= link_to "Edit Experiment", edit_proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id) %>
+    <%= link_to "Delete", proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id), method: :delete%>
+    <%= link_to "Back to proposal", proposal_path(@proposal)%>
+    <%= link_to "Comment", new_experiment_comment_path(@experiment) %>
   </ul>
+  <% if @experiment.comments %>
+    <% @experiment.comments.each do |c| %>
+      <p>"<%= c.body %>" - <%= link_to "#{c.commenter.email}", c.commenter %></p>
+    <% end %>
+  <% end %>
 <% else %>
   No experiments yet
 <% end %>

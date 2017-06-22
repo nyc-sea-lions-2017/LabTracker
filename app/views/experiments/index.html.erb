@@ -9,8 +9,9 @@
       <ul><h3>Conclusions: <%= @experiment.conclusions %></h3></ul>
       <%= link_to "Edit Experiment", edit_proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id) %>
       <%= link_to "Delete", proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id), method: :delete%>
+      <%= link_to "Back to proposal", proposal_path(@proposal)%>
     </ul>
 <% else %>
   <h3> No experiments yet! </h3>
-  <%= link_to "Create a new experiment", proposal_experiment_path %>
+  <%= link_to "Create a new experiment", proposal_experiment(@proposal) %>
 <% end %>

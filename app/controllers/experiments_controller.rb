@@ -2,7 +2,8 @@ class ExperimentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @experiment = Proposal.find_by(id: params[:proposal_id]).experiment
+    @proposal = Proposal.find_by(id: params[:proposal_id])
+    @experiment = @proposal.experiment
 
   end
 

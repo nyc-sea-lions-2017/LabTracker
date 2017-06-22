@@ -3,23 +3,24 @@ class ExperimentsController < ApplicationController
 
 
   def index
-    @proposal = Proposal.find_by(id: params[:proposal_id])
+    @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     @experiment = @proposal.experiment
 
   end
 
   def show
-    @proposal = Proposal.find_by(id: params[:proposal_id])
+    @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     @experiment = Experiment.find_by(id:params[:id])
   end
 
   def new
     @proposal = Proposal.find_by(id: params[:id])
     @experiment = Experiment.new
+    
   end
 
   def create
-    @proposal = Proposal.find_by(id: params[:proposal_id])
+    @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     @experiment = Experiment.new(experiment_params)
     @experiment.save
 
@@ -28,7 +29,7 @@ class ExperimentsController < ApplicationController
 
 
   def destroy
-    @proposal = Proposal.find_by(id: params[:proposal_id])
+    @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     if current_user.id == @proposal.user.id
       @experiment = @proposal.experiment
       @experiment.destroy
@@ -39,13 +40,12 @@ class ExperimentsController < ApplicationController
   end
 
   def edit
-    @proposal = Proposal.find_by(id: params[:proposal_id])
+    @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     @experiment = @proposal.experiment
-    # byebug
   end
 
   def update
-    @proposal = Proposal.find_by(id: params[:proposal_id])
+    @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     @experiment = @proposal.experiment
     if current_user.id == @experiment.experimenter_id
       @experiment.update_attributes(experiment_params)
@@ -59,7 +59,7 @@ class ExperimentsController < ApplicationController
 
   def experiment_params
     a = params.require(:experiment).permit(:results,:conclusions)
-    a[:proposal] = Proposal.find_by(id: params[:proposal_id])
+    a[:proposal] = Proposal.find_by(id: params[:proposal_id].to_i)
     a[:experimenter_id] = current_user.id
     a
   end

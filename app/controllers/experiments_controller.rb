@@ -22,6 +22,7 @@ class ExperimentsController < ApplicationController
   def create
     @proposal = Proposal.find_by(id: params[:proposal_id].to_i)
     @experiment = Experiment.new(experiment_params)
+    @proposal.update(status: "in progress")
     @experiment.save
 
     redirect_to proposal_experiment_path(@proposal,@experiment)

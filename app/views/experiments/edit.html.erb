@@ -1,2 +1,8 @@
-<h1>Experiments#edit</h1>
-<p>Find me in app/views/experiments/edit.html.erb</p>
+<h1> Edit Proposal </h2>
+
+<%= form_for [:proposal, @experiment] do |f| %>
+<ul>
+  <ul><%= f.text_area :results, cols: "40", rows: '12', placeholder: @experiment.results %></ul>
+  <ul><%= f.text_area :conclusions, cols: "40", rows: '12', placeholder: @experiment.conclusions  %></ul>
+  <ul><%= f.submit %></ul>
+<% end %>

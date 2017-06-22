@@ -7,9 +7,13 @@
       Experiment:
       <ul><h3>Results:<%= @experiment.results %></h3></ul>
       <ul><h3>Conclusions: <%= @experiment.conclusions %></h3></ul>
-      <%= link_to "Edit Experiment", edit_proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id) %>
-      <%= link_to "Delete", proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id), method: :delete%>
-      <%= link_to "Back to proposal", proposal_path(@proposal)%>
+      <% if current_user.id == @experiment.experimenter_id %>
+        <%= link_to "Edit Experiment", edit_proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id) %>
+        <%= link_to "Delete", proposal_experiment_path(proposal_id: @experiment.proposal.id, id: @experiment.id), method: :delete%>
+        <%= link_to "Back to proposal", proposal_path(@proposal)%>
+      <% else %>
+        <%= link_to "Back to proposal", proposal_path(@proposal)%>
+      <% end %>
     </ul>
 <% else %>
   <h3> No experiments yet! </h3>

@@ -1,9 +1,6 @@
-User.create(username: 'teddy', email:"teddy.koomen@gmail.com",password:'koomen',password_confirmation:'koomen')
-Proposal.create(title:'poop',summary:'smells',hypothesis:'bad',status:'open',user:User.last)
-
-User.create({username: 'User1', email: 'user1@email.net', password: 'password', password_confirmation: 'password'})
-User.create({username: 'User2', email: 'user2@email.net', password: 'password', password_confirmation: 'password'})
-User.create({username: 'User3', email: 'user3@email.net', password: 'password', password_confirmation: 'password'})
+User.create({username: 'MadScience', email: 'user1@email.net', password: 'password', password_confirmation: 'password'})
+User.create({username: 'Frank', email: 'user2@email.net', password: 'password', password_confirmation: 'password'})
+User.create({username: 'YrBoss', email: 'user3@email.net', password: 'password', password_confirmation: 'password'})
 User.create({username: 'User4', email: 'user4@email.net', password: 'password', password_confirmation: 'password'})
 
 Proposal.create({title: "Is gravity safe?", summary: "none", hypothesis: "none", status: "open", user: User.first})

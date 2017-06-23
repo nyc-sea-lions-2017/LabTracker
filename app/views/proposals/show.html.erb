@@ -16,15 +16,11 @@
 <%= link_to "add a comment", new_proposal_comment_path(@proposal) %><br><br>
 <% if @proposal.comments %>
   <% @proposal.comments.each do |c| %>
-    <% if current_user.id == c.commenter.id %>
-      <div class="inline block left">
-        <%= form_with(model: c, url: proposal_comment_path(@proposal, c), method: 'delete', local: true) do |f| %>
-          <%= f.submit value: 'delete' %>
-        <% end %>
-      </div>
-    <% end %>
     <p>"<%= c.body %>" -
       <%= link_to "#{c.commenter.username}", user_path(c.commenter) %>
+      <% if current_user.id == c.commenter.id %>
+        <%= link_to "Delete", proposal_comment_path(@proposal, c), method: :delete%>
+      <% end %>
     </p><br>
   <% end %>
 <% end %>

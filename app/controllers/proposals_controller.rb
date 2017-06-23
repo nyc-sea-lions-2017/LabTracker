@@ -21,6 +21,7 @@ class ProposalsController < ApplicationController
 
   def edit
     @user = current_user
+    @proposal = Proposal.find(params[:id])
   end
 
   def destroy

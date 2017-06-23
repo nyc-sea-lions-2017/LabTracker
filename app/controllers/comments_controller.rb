@@ -45,10 +45,19 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find_by(id: params[:id])
-    @thing = @comment.commentable
-    # @route = @type.find_by(id: @comment.commentable_id)
     @comment.destroy
-    redirect_to @thing
+    if params[:proposal_id]
+      @proposal = Proposal.find_by(id: params[:proposal_id])
+      redirect_to @proposal
+    elsif params[:experiment_id]
+      @experiment = Experiment.find_by(id: params[:experiment_id])
+      @proposal = @experiment.proposal
+      redirect_to proposal_experiment_path(@proposal, @experiment)
+    elsif params[:observation_id]
+      @observation = Observation.find_by(id: params[:observation_id])
+      @experiment = @observation.experiment
+      redirect_to experiment_observation_path(@experiment, @observation)
+    end
   end
 
   private

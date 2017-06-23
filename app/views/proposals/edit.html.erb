@@ -1,6 +1,6 @@
 <h1>EDIT YOUR PROPOSAL</h1>
 
-<% form_with(model: @proposal, method: 'put', locals: true) do |f| %>
+<%= form_with(model: @proposal, method: 'put', local: true) do |f| %>
   <%= f.text_field :title, value: @proposal.title %>
   <%= f.text_area :summary, value: @proposal.summary %>
   <%= f.text_area :hypothesis, value: @proposal.hypothesis %>

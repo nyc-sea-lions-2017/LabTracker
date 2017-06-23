@@ -9,7 +9,7 @@
   </ul>
   <% if @experiment.comments %>
     <% @experiment.comments.each do |c| %>
-      <p>"<%= c.body %>" - <%= link_to "#{c.commenter.email}", c.commenter %>
+      <p>"<%= c.body %>" - <%= link_to "#{c.commenter.username}", c.commenter %>
       <% if current_user.id == c.commenter.id %>
           <%= link_to "Delete", experiment_comment_path(@experiment, c), method: :delete%>
       <% end %></p>
